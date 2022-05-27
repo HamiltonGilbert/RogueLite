@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Color tempColor = shield.GetComponent<SpriteRenderer>().color;
+        tempColor.a = .2f;
+        shield.GetComponent<SpriteRenderer>().color = tempColor;
+        // comment out later
         hull.GetComponent<SpriteRenderer>().sprite = shipBase.ShipSprite;
     }
 
@@ -19,5 +23,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // for other script to reference
+    public void ChooseShip(ShipBase ship)
+    {
+        shipBase = ship;
+        hull.GetComponent<SpriteRenderer>().sprite = shipBase.ShipSprite;
     }
 }
