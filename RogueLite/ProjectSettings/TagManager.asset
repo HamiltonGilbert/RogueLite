@@ -50,3 +50,6 @@ TagManager:
   - name: Ship
     uniqueID: 4215085375
     locked: 0
+  - name: Thrusters
+    uniqueID: 4094239411
+    locked: 0

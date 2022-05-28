@@ -17,7 +17,7 @@ public class ShipBase : ScriptableObject
     [SerializeField] int maxShield;
     [SerializeField] float damage;
     [SerializeField] float attacksPerSecond;
-    [SerializeField] int moveSpeed;
+    [SerializeField] float moveSpeed;
 
     public string Name
     {
@@ -50,7 +50,7 @@ public class ShipBase : ScriptableObject
     {
         get { return attacksPerSecond; }
     }
-    public int MoveSpeed
+    public float MoveSpeed
     {
         get { return moveSpeed; }
     }

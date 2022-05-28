@@ -19,4 +19,4 @@ MonoBehaviour:
   maxShield: 80
   damage: 4
   attacksPerSecond: 2
-  moveSpeed: 20
+  moveSpeed: 2
