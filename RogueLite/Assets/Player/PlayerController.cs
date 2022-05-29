@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         shipBase = ship;
         hull.GetComponent<SpriteRenderer>().sprite = shipBase.ShipSprite;
+        transform.localScale *= shipBase.SizeMultiplier;
         moveSpeed = shipBase.MoveSpeed;
     }
 }

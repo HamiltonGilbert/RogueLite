@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619cd6c06834778469d4ef589bdedca4, type: 3}
+  m_Name: StealthShip
+  m_EditorClassIdentifier: 
+  name: Stealth
+  description: 
+  shipSprite: {fileID: 21300000, guid: f20e98418becc3c4e961226d7bffceaa, type: 3}
+  maxHP: 65
+  maxShield: 20
+  damage: 8
+  attacksPerSecond: 1
+  moveSpeed: 2.5
+  sizeMultiplier: 1

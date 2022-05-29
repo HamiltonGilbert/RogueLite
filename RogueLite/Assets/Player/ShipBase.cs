@@ -18,6 +18,7 @@ public class ShipBase : ScriptableObject
     [SerializeField] float damage;
     [SerializeField] float attacksPerSecond;
     [SerializeField] float moveSpeed;
+    [SerializeField] float sizeMultiplier;
 
     public string Name
     {
@@ -54,6 +55,9 @@ public class ShipBase : ScriptableObject
     {
         get { return moveSpeed; }
     }
-
+    public float SizeMultiplier
+    {
+        get { return sizeMultiplier; }
+    }
 
 }
