@@ -11,37 +11,40 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject thrusters;
 
     private float moveSpeed;
-
-    private Vector2 input;
     private bool isMoving;
+    private bool gameRunning;
 
     // Start is called before the first frame update
     void Start()
     {
         isMoving = false;
+        gameRunning = false;
+        thrusters.SetActive(false);
 
         Color tempColor = shield.GetComponent<SpriteRenderer>().color;
         tempColor.a = .2f;
         shield.GetComponent<SpriteRenderer>().color = tempColor;
-        // comment out later
-        ChooseShip(shipBase);
     }
 
     void Update()
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.up = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
+        if (gameRunning)
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.up = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine(Move(mousePosition));
-        }
-        if (isMoving)
-        {
-            thrusters.SetActive(true);
-        } else
-        {
-            thrusters.SetActive(false);
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartCoroutine(Move(mousePosition));
+            }
+            if (isMoving)
+            {
+                thrusters.SetActive(true);
+            }
+            else
+            {
+                thrusters.SetActive(false);
+            }
         }
     }
 
@@ -57,38 +60,23 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
     }
 
-    // for other script to reference
+    // for other scripts to reference
     public void ChooseShip(ShipBase ship)
     {
         shipBase = ship;
         hull.GetComponent<SpriteRenderer>().sprite = shipBase.ShipSprite;
         transform.localScale *= shipBase.SizeMultiplier;
         moveSpeed = shipBase.MoveSpeed;
+        StartCoroutine(StartGame(.5f));
+    }
+    IEnumerator StartGame(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameRunning = true;
+    }
+    public void EndGame()
+    {
+        gameRunning = false;
+        thrusters.SetActive(false);
     }
 }
-
-/*
- public Transform CharacterTransform;
-    public float RotationSmoothingCoef = 0.01f;
-
-    private Quaternion targetRotation;
-
-    void Update()
-    {
-        var groundPlane = new Plane(Vector3.up, -CharacterTransform.position.y);
-        var mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float hitDistance;
-
-        if (groundPlane.Raycast(mouseRay, out hitDistance))
-        {
-            var lookAtPosition = mouseRay.GetPoint(hitDistance);
-            targetRotation = Quaternion.LookRotation(lookAtPosition - CharacterTransform.position, Vector3.up);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        var rotation = Quaternion.Lerp(CharacterTransform.rotation, targetRotation, RotationSmoothingCoef);
-        CharacterTransform.rotation = rotation;
-    }
- */

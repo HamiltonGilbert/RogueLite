@@ -7,6 +7,7 @@ public class ShipMenu : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] ShipBase shipBase;
     [SerializeField] MenuDescription menuDescription;
+    [SerializeField] SystemManager systemManager;
 
     private Color color;
 
@@ -25,5 +26,9 @@ public class ShipMenu : MonoBehaviour
     private void OnMouseExit()
     {
         spriteRenderer.color = new Color(color.r, color.g, color.b, 0);
+    }
+    private void OnMouseDown()
+    {
+        systemManager.ChooseShip(shipBase);
     }
 }
