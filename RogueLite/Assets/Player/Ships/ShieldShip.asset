@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: ShieldShip
   m_EditorClassIdentifier: 
   name: Shield
-  description: 
+  description: This ship focuses on a strong defense over speed or power.
   shipSprite: {fileID: 21300000, guid: bf414314899210942991421e006cc182, type: 3}
-  maxHP: 45
-  maxShield: 80
-  damage: 4
-  attacksPerSecond: 2
+  maxHP: 30
+  maxShield: 60
+  damage: 16
+  attacksPerSecond: 1
   moveSpeed: 2
   sizeMultiplier: 1

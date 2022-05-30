@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: StealthShip
   m_EditorClassIdentifier: 
   name: Stealth
-  description: 
+  description: 'A small ship that sacrifices both defense and offense for '
   shipSprite: {fileID: 21300000, guid: f20e98418becc3c4e961226d7bffceaa, type: 3}
   maxHP: 65
   maxShield: 20
-  damage: 8
-  attacksPerSecond: 1
+  damage: 30
+  attacksPerSecond: 0.5
   moveSpeed: 2.5
-  sizeMultiplier: 1
+  sizeMultiplier: 0.95

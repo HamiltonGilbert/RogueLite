@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: FireBird
   m_EditorClassIdentifier: 
   name: FireBird
-  description: 
+  description: An extremely quick ship that trades HP and damage for the best maneuverability
+    and attack speed.
   shipSprite: {fileID: 21300000, guid: 58622c7fbb46dcd4780e3710a753f281, type: 3}
-  maxHP: 75
+  maxHP: 60
   maxShield: 25
   damage: 1
-  attacksPerSecond: 5
+  attacksPerSecond: 10
   moveSpeed: 4.5
-  sizeMultiplier: 1
+  sizeMultiplier: 0.9

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CarrierShip
   m_EditorClassIdentifier: 
   name: Carrier
-  description: 
+  description: A slow but heavily fortified ship with a powerful weapon.
   shipSprite: {fileID: 21300000, guid: 483d6a72df030c046b8e163c5f4312f7, type: 3}
   maxHP: 110
   maxShield: 35
-  damage: 8
-  attacksPerSecond: 1
+  damage: 48
+  attacksPerSecond: 0.33
   moveSpeed: 2
-  sizeMultiplier: 2
+  sizeMultiplier: 1.2
