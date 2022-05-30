@@ -12,13 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float friction;
 
     private float moveSpeed;
-    private bool isMoving;
     private bool gameRunning;
 
     // Start is called before the first frame update
     void Start()
     {
-        isMoving = false;
         gameRunning = false;
         thrusters.SetActive(false);
 
@@ -32,13 +30,14 @@ public class PlayerController : MonoBehaviour
         if (gameRunning)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 targetVelocity = mousePosition - new Vector2(transform.position.x,transform.position.y);
             // rotation
             transform.up = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
 
             // move ship
             if (Input.GetMouseButton(0))
             {
-                Move(mousePosition);
+                Move(new Vector2(targetVelocity.normalized.x, targetVelocity.normalized.y));
                 thrusters.SetActive(true);
             }
             else
@@ -48,10 +47,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Move(Vector3 targetPos)
+    void Move(Vector3 targetVelocity)
     {
         Debug.Log("move");
-        rigidbody.velocity += moveSpeed * Time.fixedDeltaTime * new Vector2(targetPos.normalized.x, targetPos.normalized.y);
+        rigidbody.velocity += moveSpeed * Time.fixedDeltaTime * new Vector2(targetVelocity.x, targetVelocity.y);
     }
 
     // for other scripts to reference

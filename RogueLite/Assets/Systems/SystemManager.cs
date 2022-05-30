@@ -21,6 +21,10 @@ public class SystemManager : MonoBehaviour
         mainMenuSystem.CloseMenu();
         gameSystem.StartGame(ship);
     }
+    public void ChooseShield(ShieldBase shieldBase)
+    {
+
+    }
 
     private void Update()
     {
