@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject shield;
     [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] GameObject thrusters;
+    [SerializeField] float friction;
 
     private float moveSpeed;
     private bool isMoving;
@@ -26,19 +27,18 @@ public class PlayerController : MonoBehaviour
         shield.GetComponent<SpriteRenderer>().color = tempColor;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (gameRunning)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // rotation
             transform.up = new Vector3(mousePosition.x, mousePosition.y, 0) - transform.position;
 
-            if (Input.GetMouseButtonDown(0))
+            // move ship
+            if (Input.GetMouseButton(0))
             {
-                StartCoroutine(Move(mousePosition));
-            }
-            if (isMoving)
-            {
+                Move(mousePosition);
                 thrusters.SetActive(true);
             }
             else
@@ -48,16 +48,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Move(Vector3 targetPos)
+    void Move(Vector3 targetPos)
     {
-        isMoving = true;
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-        transform.position = targetPos;
-        isMoving = false;
+        Debug.Log("move");
+        rigidbody.velocity += moveSpeed * Time.fixedDeltaTime * new Vector2(targetPos.normalized.x, targetPos.normalized.y);
     }
 
     // for other scripts to reference
