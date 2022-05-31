@@ -21,6 +21,14 @@ public class ShieldBase : ScriptableObject
     [SerializeField] float damageMultiplier;
     [SerializeField] float massMultiplier;
 
+
+    private Sprite circle;
+
+    private void OnEnable()
+    {
+        circle = Resources.Load<Sprite>("Circle");
+    }
+
     public string Name
     {
         get { return name; }
@@ -62,5 +70,9 @@ public class ShieldBase : ScriptableObject
     public float MassMultiplier
     {
         get { return massMultiplier; }
+    }
+    public Sprite Circle
+    {
+        get { return circle; }
     }
 }

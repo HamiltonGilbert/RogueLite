@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Option : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] SpriteRenderer highlight;
+    [SerializeField] Image image;
     [SerializeField] ShipBase shipBase;
     [SerializeField] ShieldBase shieldBase;
     [SerializeField] MenuDescription menuDescription;
@@ -17,18 +19,27 @@ public class Option : MonoBehaviour
 
     void Start()
     {
-        highlightColor = spriteRenderer.color;
-        spriteRenderer.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 0);
+        highlightColor = highlight.color;
+        highlight.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 0);
+        if (ship)
+        {
+            image.sprite = shipBase.ShipSprite;
+        }
+        if (shield)
+        {
+            image.sprite = shieldBase.Circle;
+            image.color = shieldBase.ShieldColor;
+        }
     }
 
     private void OnMouseEnter()
     {
-        spriteRenderer.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 1);
+        highlight.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 1);
         if (ship)
         {
             menuDescription.SetDescription(shipBase);
         }
-        else
+        if (shield)
         {
             menuDescription.SetDescription(shieldBase);
         }
@@ -36,7 +47,7 @@ public class Option : MonoBehaviour
 
     private void OnMouseExit()
     {
-        spriteRenderer.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 0);
+        highlight.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 0);
     }
     private void OnMouseDown()
     {
@@ -44,7 +55,7 @@ public class Option : MonoBehaviour
         {
             systemManager.ChooseShip(shipBase);
         }
-        else
+        if (shield)
         {
             systemManager.ChooseShield(shieldBase);
             systemManager.StartGame();

@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ShieldBase shieldBase;
     [SerializeField] GameObject hull;
     [SerializeField] GameObject shield;
-    [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] GameObject thrusters;
+    [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] float friction;
 
     private float currentHP;
@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
         print("Size Modifier: " + sizeMultiplier);
         print("Mass: " + mass);
 
+        transform.position = Vector3.zero;
         currentHP = maxHP;
         currentShield = maxShield;
         transform.localScale *= sizeMultiplier;
