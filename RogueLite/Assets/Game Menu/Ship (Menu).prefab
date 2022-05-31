@@ -102,6 +102,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3157543710504840486}
+  shipBase: {fileID: 0}
+  shieldBase: {fileID: 0}
+  menuDescription: {fileID: 0}
+  systemManager: {fileID: 0}
+  color: Black
+  ship: 0
+  shield: 0
 --- !u!58 &2828192270440623813
 CircleCollider2D:
   m_ObjectHideFlags: 0

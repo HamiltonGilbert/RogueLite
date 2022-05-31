@@ -13,17 +13,17 @@ public class Option : MonoBehaviour
     public bool ship;
     public bool shield;
 
-    private Color color;
+    private Color highlightColor;
 
     void Start()
     {
-        color = spriteRenderer.color;
-        spriteRenderer.color = new Color(color.r, color.g, color.b, 0);
+        highlightColor = spriteRenderer.color;
+        spriteRenderer.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 0);
     }
 
     private void OnMouseEnter()
     {
-        spriteRenderer.color = new Color(color.r, color.g, color.b, 1);
+        spriteRenderer.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 1);
         if (ship)
         {
             menuDescription.SetDescription(shipBase);
@@ -36,7 +36,7 @@ public class Option : MonoBehaviour
 
     private void OnMouseExit()
     {
-        spriteRenderer.color = new Color(color.r, color.g, color.b, 0);
+        spriteRenderer.color = new Color(highlightColor.r, highlightColor.g, highlightColor.b, 0);
     }
     private void OnMouseDown()
     {
@@ -47,6 +47,7 @@ public class Option : MonoBehaviour
         else
         {
             systemManager.ChooseShield(shieldBase);
+            systemManager.StartGame();
         }
     }
 }

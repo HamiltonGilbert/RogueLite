@@ -11,14 +11,15 @@ public class ShieldBase : ScriptableObject
     [TextArea]
     [SerializeField] string description;
 
-    [SerializeField] Sprite shieldSprite;
+    [SerializeField] Color shieldColor;
 
-    [SerializeField] int maxHP;
     [SerializeField] int maxShield;
-    [SerializeField] float damage;
-    [SerializeField] float attacksPerSecond;
-    [SerializeField] float moveSpeed;
+    [SerializeField] float cooldown;
+    [SerializeField] float hpMultiplier;
+    [SerializeField] float speedMultiplier;
     [SerializeField] float sizeMultiplier;
+    [SerializeField] float damageMultiplier;
+    [SerializeField] float massMultiplier;
 
     public string Name
     {
@@ -30,34 +31,36 @@ public class ShieldBase : ScriptableObject
         get { return description; }
     }
 
-    public Sprite ShipSprite
+    public Color ShieldColor
     {
-        get { return shieldSprite; }
-    }
-
-    public int MaxHP
-    {
-        get { return maxHP; }
+        get { return shieldColor; }
     }
     public int MaxShield
     {
         get { return maxShield; }
     }
-    public float Damage
+    public float HPMultiplier
     {
-        get { return damage; }
+        get { return hpMultiplier; }
     }
-    public float AttacksPerSecond
+    public float Cooldown
     {
-        get { return attacksPerSecond; }
+        get { return cooldown; }
     }
-    public float MoveSpeed
+    public float SpeedMultiplier
     {
-        get { return moveSpeed; }
+        get { return speedMultiplier; }
     }
     public float SizeMultiplier
     {
         get { return sizeMultiplier; }
     }
-
+    public float DamageMultiplier
+    {
+        get { return damageMultiplier; }
+    }
+    public float MassMultiplier
+    {
+        get { return massMultiplier; }
+    }
 }

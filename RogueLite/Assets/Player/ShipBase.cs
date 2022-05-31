@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Ship", menuName = "Ship")]
@@ -14,11 +12,12 @@ public class ShipBase : ScriptableObject
     [SerializeField] Sprite shipSprite;
 
     [SerializeField] int maxHP;
-    [SerializeField] int maxShield;
+    [SerializeField] float shieldMultiplier;
     [SerializeField] float damage;
     [SerializeField] float attacksPerSecond;
     [SerializeField] float moveSpeed;
     [SerializeField] float sizeMultiplier;
+    [SerializeField] float mass;
 
     public string Name
     {
@@ -39,9 +38,9 @@ public class ShipBase : ScriptableObject
     {
         get { return maxHP; }
     }
-    public int MaxShield
+    public float ShieldMultiplier
     {
-        get { return maxShield; }
+        get { return shieldMultiplier; }
     }
     public float Damage
     {
@@ -59,5 +58,8 @@ public class ShipBase : ScriptableObject
     {
         get { return sizeMultiplier; }
     }
-
+    public float Mass
+    {
+        get { return mass; }
+    }
 }

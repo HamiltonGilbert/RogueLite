@@ -8,22 +8,27 @@ public class SystemManager : MonoBehaviour
     [SerializeField] GameSystem gameSystem;
 
     private ShipBase ship;
+    private ShieldBase shield;
 
     void Start()
     {
         gameSystem.EndGame();
         mainMenuSystem.OpenMenu();
-
     }
     public void ChooseShip(ShipBase shipBase)
     {
         ship = shipBase;
-        mainMenuSystem.CloseMenu();
-        gameSystem.StartGame(ship);
+        mainMenuSystem.ShieldSelection();
     }
     public void ChooseShield(ShieldBase shieldBase)
     {
+        shield = shieldBase;
+    }
 
+    public void StartGame()
+    {
+        mainMenuSystem.CloseMenu();
+        gameSystem.StartGame(ship, shield);
     }
 
     private void Update()
