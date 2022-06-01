@@ -20,5 +20,5 @@ MonoBehaviour:
   damage: 24
   attacksPerSecond: 0.5
   moveSpeed: 2.5
-  sizeMultiplier: 1
+  sizeMultiplier: 1.1
   mass: 75

@@ -82,8 +82,8 @@ public class PlayerController : MonoBehaviour
     {
         maxHP = (int)(shipBase.MaxHP * shieldBase.HPMultiplier);
         maxShield = shieldBase.MaxShield;
-        damage = shipBase.Damage * shieldBase.DamageMultiplier;
-        attacksPerSecond = shipBase.AttacksPerSecond;
+        damage = shipBase.DamageMultiplier * shieldBase.DamageMultiplier;
+        attacksPerSecond = shipBase.AttackSpeedMultiplier;
         moveSpeed = shipBase.MoveSpeed * shieldBase.SpeedMultiplier;
         sizeMultiplier = shipBase.SizeMultiplier * shieldBase.SizeMultiplier;
         mass = shipBase.Mass * shieldBase.MassMultiplier;

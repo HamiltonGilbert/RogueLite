@@ -9,11 +9,13 @@ public class Option : MonoBehaviour
     [SerializeField] Image image;
     [SerializeField] ShipBase shipBase;
     [SerializeField] ShieldBase shieldBase;
+    [SerializeField] WeaponBase weaponBase;
     [SerializeField] MenuDescription menuDescription;
     [SerializeField] SystemManager systemManager;
 
     public bool ship;
     public bool shield;
+    public bool weapon;
 
     private Color highlightColor;
 
@@ -30,6 +32,10 @@ public class Option : MonoBehaviour
             image.sprite = shieldBase.Circle;
             image.color = shieldBase.ShieldColor;
         }
+        if (weapon)
+        {
+            image.sprite = weaponBase.WeaponSprite;
+        }
     }
 
     private void OnMouseEnter()
@@ -42,6 +48,10 @@ public class Option : MonoBehaviour
         if (shield)
         {
             menuDescription.SetDescription(shieldBase);
+        }
+        if (weapon)
+        {
+            menuDescription.SetDescription(weaponBase);
         }
     }
 

@@ -13,8 +13,8 @@ public class ShipBase : ScriptableObject
 
     [SerializeField] int maxHP;
     [SerializeField] float shieldMultiplier;
-    [SerializeField] float damage;
-    [SerializeField] float attacksPerSecond;
+    [SerializeField] float damageMultiplier;
+    [SerializeField] float attackSpeedMultiplier;
     [SerializeField] float moveSpeed;
     [SerializeField] float sizeMultiplier;
     [SerializeField] float mass;
@@ -42,13 +42,13 @@ public class ShipBase : ScriptableObject
     {
         get { return shieldMultiplier; }
     }
-    public float Damage
+    public float DamageMultiplier
     {
-        get { return damage; }
+        get { return damageMultiplier; }
     }
-    public float AttacksPerSecond
+    public float AttackSpeedMultiplier
     {
-        get { return attacksPerSecond; }
+        get { return attackSpeedMultiplier; }
     }
     public float MoveSpeed
     {

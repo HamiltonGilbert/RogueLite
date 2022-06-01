@@ -19,9 +19,9 @@ public class MenuDescription : MonoBehaviour
         name.text = ship.Name;
         description.text = ship.Description;
         area1.text = "HP: " + ship.MaxHP;
-        area2.text = "Shield Multiplier: " + ship.ShieldMultiplier * 100 + "%";
-        area3.text = "Damage: " + ship.Damage;
-        area4.text = "Rate of Fire: " + ship.AttacksPerSecond * 60;
+        area2.text = "Shield: " + ship.ShieldMultiplier * 100 + "%";
+        area3.text = "Damage: " + ship.DamageMultiplier * 100 + "%";
+        area4.text = "Attack Speed: " + ship.AttackSpeedMultiplier * 100 + "%";
         area5.text = "Thrusters: " + ship.MoveSpeed * 10;
         area6.text = "Size: " + ship.SizeMultiplier * 100;
         area7.text = "Mass: " + ship.Mass;
@@ -37,5 +37,17 @@ public class MenuDescription : MonoBehaviour
         area5.text = "Thrusters: " + shield.SpeedMultiplier * 100 + "%";
         area6.text = "Size: " + shield.SizeMultiplier * 100 + "%";
         area7.text = "Mass: " + shield.MassMultiplier * 100 + "%";
+    }
+    public void SetDescription(WeaponBase weapon)
+    {
+        name.text = weapon.Name;
+        description.text = weapon.Description;
+        area1.text = "Damage: " + weapon.Damage;
+        area2.text = "Rate of Fire: " + weapon.AttacksPerSecond;
+        area3.text = "Thrusters: " + weapon.SpeedMultiplier * 100 + "%";
+        area4.text = "Size: " + weapon.SizeMultiplier * 100 + "%";
+        area5.text = "Mass: " + weapon.MassMultiplier * 100 + "%";
+        area6.text = "Shield Cooldown: " + weapon.ShieldCooldownMultiplier * 100 + "%";
+        area7.text = "";
     }
 }
