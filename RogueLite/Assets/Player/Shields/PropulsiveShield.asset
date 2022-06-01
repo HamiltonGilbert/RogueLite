@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PropulsiveShield
   m_EditorClassIdentifier: 
   name: Propulsive
-  description: 
+  description: A shield that sacrifices its own strength to boost the damage of your
+    weapon.
   shieldColor: {r: 0.73333335, g: 0.42352945, b: 0.18039216, a: 0.2}
   maxShield: 30
   cooldown: 5.5

@@ -18,6 +18,7 @@ public class ShipBase : ScriptableObject
     [SerializeField] float moveSpeed;
     [SerializeField] float sizeMultiplier;
     [SerializeField] float mass;
+    [SerializeField] float weaponSizeModifier;
 
     public string Name
     {
@@ -61,5 +62,9 @@ public class ShipBase : ScriptableObject
     public float Mass
     {
         get { return mass; }
+    }
+    public float WeaponSizeModifier
+    {
+        get { return weaponSizeModifier; }
     }
 }

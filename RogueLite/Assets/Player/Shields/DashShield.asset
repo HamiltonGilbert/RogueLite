@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DashShield
   m_EditorClassIdentifier: 
   name: Dash
-  description: 
+  description: Sacrifices shield strength for the speed to make a quick getaway.
   shieldColor: {r: 0.24313727, g: 0.53333336, b: 0.6313726, a: 0.2}
   maxShield: 20
   cooldown: 4.5

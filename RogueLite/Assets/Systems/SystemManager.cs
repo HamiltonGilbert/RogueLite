@@ -9,6 +9,7 @@ public class SystemManager : MonoBehaviour
 
     private ShipBase ship;
     private ShieldBase shield;
+    private WeaponBase weapon;
 
     void Start()
     {
@@ -23,12 +24,18 @@ public class SystemManager : MonoBehaviour
     public void ChooseShield(ShieldBase shieldBase)
     {
         shield = shieldBase;
+        mainMenuSystem.WeaponSelection();
+    }
+    public void ChooseWeapon(WeaponBase weaponBase)
+    {
+        weapon = weaponBase;
+        mainMenuSystem.WeaponSelection();
     }
 
     public void StartGame()
     {
         mainMenuSystem.CloseMenu();
-        gameSystem.StartGame(ship, shield);
+        gameSystem.StartGame(ship, shield, weapon);
     }
 
     private void Update()

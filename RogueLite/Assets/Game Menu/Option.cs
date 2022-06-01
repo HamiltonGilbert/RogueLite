@@ -68,6 +68,10 @@ public class Option : MonoBehaviour
         if (shield)
         {
             systemManager.ChooseShield(shieldBase);
+        }
+        if (weapon)
+        {
+            systemManager.ChooseWeapon(weaponBase);
             systemManager.StartGame();
         }
     }

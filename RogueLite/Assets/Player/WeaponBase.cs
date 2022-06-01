@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "Weapon")]
@@ -13,13 +11,14 @@ public class WeaponBase : ScriptableObject
 
     [SerializeField] Sprite weaponSprite;
 
-    [SerializeField] int damage;
+    [SerializeField] float damage;
     [SerializeField] float attacksPerSecond;
     [SerializeField] float speedMultiplier;
-    [SerializeField] float sizeMultiplier;
-    [SerializeField] float massMultiplier;
     [SerializeField] float shieldCooldownMultiplier;
-
+    [SerializeField] float weaponSize;
+    [SerializeField] float spread;
+    [SerializeField] float projectileSpeed;
+    
     public string Name
     {
         get { return name; }
@@ -34,7 +33,7 @@ public class WeaponBase : ScriptableObject
     {
         get { return weaponSprite; }
     }
-    public int Damage
+    public float Damage
     {
         get { return damage; }
     }
@@ -46,16 +45,20 @@ public class WeaponBase : ScriptableObject
     {
         get { return speedMultiplier; }
     }
-    public float SizeMultiplier
-    {
-        get { return sizeMultiplier; }
-    }
-    public float MassMultiplier
-    {
-        get { return massMultiplier; }
-    }
     public float ShieldCooldownMultiplier
     {
         get { return shieldCooldownMultiplier; }
+    }
+    public float WeaponSize
+    {
+        get { return weaponSize; }
+    }
+    public float Spread
+    {
+        get { return spread; }
+    }
+    public float ProjectileSpeed
+    {
+        get { return projectileSpeed; }
     }
 }

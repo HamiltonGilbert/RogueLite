@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bulwark
   m_EditorClassIdentifier: 
   name: Bulwark
-  description: 
+  description: Built for withstanding heavy hits.
   shieldColor: {r: 0.4117647, g: 1, b: 0.39215687, a: 0.2}
   maxShield: 120
   cooldown: 9

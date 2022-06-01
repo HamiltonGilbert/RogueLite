@@ -16,9 +16,10 @@ MonoBehaviour:
   description: A powerful ship built to withstand heavy hits and return them.
   shipSprite: {fileID: 21300000, guid: c1d8a0e0f6128854490ddb5f7736861a, type: 3}
   maxHP: 130
-  shieldMultiplier: 0.75
-  damage: 24
-  attacksPerSecond: 0.5
+  shieldMultiplier: 0.6
+  damageMultiplier: 1.2
+  attackSpeedMultiplier: 0.5
   moveSpeed: 2.5
   sizeMultiplier: 1.1
-  mass: 75
+  mass: 110
+  weaponSizeModifier: 1.2

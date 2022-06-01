@@ -7,6 +7,7 @@ public class MainMenuSystem : MonoBehaviour
     [SerializeField] new GameObject camera;
     [SerializeField] GameObject shipSelection;
     [SerializeField] GameObject shieldSelection;
+    [SerializeField] GameObject weaponSelection;
     public void OpenMenu()
     {
         camera.SetActive(true);
@@ -20,10 +21,16 @@ public class MainMenuSystem : MonoBehaviour
     {
         shipSelection.SetActive(true);
         shieldSelection.SetActive(false);
+        weaponSelection.SetActive(false);
     }
     public void ShieldSelection()
     {
         shieldSelection.SetActive(true);
         shipSelection.SetActive(false);
+    }
+    public void WeaponSelection()
+    {
+        weaponSelection.SetActive(true);
+        shieldSelection.SetActive(false);
     }
 }

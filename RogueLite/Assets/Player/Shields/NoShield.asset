@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NoShield
   m_EditorClassIdentifier: 
   name: No Shield
-  description: 
+  description: For those who live life on the edge.
   shieldColor: {r: 0, g: 0, b: 0, a: 0}
   maxShield: 0
   cooldown: 0

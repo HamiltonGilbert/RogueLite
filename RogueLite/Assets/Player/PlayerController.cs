@@ -6,19 +6,27 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] ShipBase shipBase;
     [SerializeField] ShieldBase shieldBase;
+    [SerializeField] WeaponBase weaponBase;
     [SerializeField] GameObject hull;
     [SerializeField] GameObject shield;
     [SerializeField] GameObject thrusters;
+    [SerializeField] GameObject weapon;
     [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] float friction;
+
+    [SerializeField] GameObject projectile;
 
     private float currentHP;
     private int currentShield;
 
     private int maxHP;
     private int maxShield;
+    private float shieldCooldown;
     private float damage;
     private float attacksPerSecond;
+    private float weaponSize;
+    private float weaponSpread;
+    private float projectileSpeed;
     private float moveSpeed;
     private float sizeMultiplier;
     private float mass;
@@ -35,26 +43,40 @@ public class PlayerController : MonoBehaviour
         tempColor.a = .2f;
         shield.GetComponent<SpriteRenderer>().color = tempColor;
     }
+    private void Update()
+    {
+        if (gameRunning)
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // fire projectile
+            if (Input.GetMouseButtonDown(1))
+            {
+                Instantiate(projectile, transform.root, transform).GetComponent<Projectile>().Create(projectileSpeed, mousePosition, transform.position, weaponBase.WeaponSprite);
+            }
+        }
+    }
 
     void FixedUpdate()
     {
         if (gameRunning)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 targetVelocity = mousePosition - new Vector2(transform.position.x,transform.position.y);
+            Vector2 targetVelocity = (mousePosition - new Vector2(transform.position.x,transform.position.y)).normalized;
             // rotation
             transform.up = new Vector3(mousePosition.x, mousePosition.y, 0) - new Vector3(transform.position.x, transform.position.y, 0);
 
             // move ship
             if (Input.GetMouseButton(0))
             {
-                Move(new Vector2(targetVelocity.normalized.x, targetVelocity.normalized.y));
+                Move(new Vector2(targetVelocity.x, targetVelocity.y));
                 thrusters.SetActive(true);
             }
             else
             {
                 thrusters.SetActive(false);
             }
+
+            
         }
     }
 
@@ -74,6 +96,11 @@ public class PlayerController : MonoBehaviour
         this.shieldBase = shieldBase;
         shield.GetComponent<SpriteRenderer>().color = shieldBase.ShieldColor;
     }
+    public void ChooseWeapon(WeaponBase weaponBase)
+    {
+        this.weaponBase = weaponBase;
+        weapon.GetComponent<SpriteRenderer>().sprite = weaponBase.WeaponSprite;
+    }
     public void StartGame()
     {
         StartCoroutine(StartGame(.5f));
@@ -81,18 +108,26 @@ public class PlayerController : MonoBehaviour
     IEnumerator StartGame(float time)
     {
         maxHP = (int)(shipBase.MaxHP * shieldBase.HPMultiplier);
-        maxShield = shieldBase.MaxShield;
-        damage = shipBase.DamageMultiplier * shieldBase.DamageMultiplier;
-        attacksPerSecond = shipBase.AttackSpeedMultiplier;
-        moveSpeed = shipBase.MoveSpeed * shieldBase.SpeedMultiplier;
+        maxShield = (int) (shieldBase.MaxShield * shipBase.ShieldMultiplier);
+        shieldCooldown = shieldBase.Cooldown * weaponBase.ShieldCooldownMultiplier;
+        damage = weaponBase.Damage * shipBase.DamageMultiplier * shieldBase.DamageMultiplier;
+        attacksPerSecond = weaponBase.AttacksPerSecond * shipBase.AttackSpeedMultiplier;
+        weaponSize = weaponBase.WeaponSize * shipBase.WeaponSizeModifier;
+        weaponSpread = weaponBase.Spread;
+        projectileSpeed = weaponBase.ProjectileSpeed;
+        moveSpeed = shipBase.MoveSpeed * shieldBase.SpeedMultiplier * weaponBase.SpeedMultiplier;
         sizeMultiplier = shipBase.SizeMultiplier * shieldBase.SizeMultiplier;
         mass = shipBase.Mass * shieldBase.MassMultiplier;
         print("HP: " + maxHP);
         print("Shields: " + maxShield);
+        print("Shield Cooldown: " + shieldCooldown);
         print("Damage: " + damage);
         print("Attacks Per Second: " + attacksPerSecond);
+        print("Weapon Size: " + weaponSize * 100 + "%");
+        print("Weapon Spread: " + weaponSpread + "°");
+        print("Weapon Spread: " + projectileSpeed);
         print("Move Speed: " + moveSpeed);
-        print("Size Modifier: " + sizeMultiplier);
+        print("Size Modifier: " + sizeMultiplier * 100 + "%");
         print("Mass: " + mass);
 
         transform.position = Vector3.zero;
