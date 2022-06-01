@@ -33,9 +33,12 @@ public class PlayerController : MonoBehaviour
 
     private bool gameRunning;
 
+    private float fireTiming;
+
     // Start is called before the first frame update
     void Start()
     {
+        fireTiming = 0;
         gameRunning = false;
         thrusters.SetActive(false);
 
@@ -47,11 +50,17 @@ public class PlayerController : MonoBehaviour
     {
         if (gameRunning)
         {
+            fireTiming += Time.deltaTime;
+
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // fire projectile
-            if (Input.GetMouseButtonDown(1))
+            while (Input.GetMouseButton(1) && fireTiming > 1/attacksPerSecond)
             {
-                Instantiate(projectile, transform.root, transform).GetComponent<Projectile>().Create(projectileSpeed, mousePosition, transform.position, weaponBase.WeaponSprite);
+                float rotationMod = Random.Range(-.5f * weaponSpread, .5f * weaponSpread);
+                Vector3 rotation = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x * rotationMod);
+                
+                fireTiming -= 1 / attacksPerSecond;
+                Instantiate(projectile, transform.position, Quaternion.identity, transform.root).GetComponent<Projectile>().Create(projectileSpeed, mousePosition, transform.position, rotation, weaponBase.WeaponSprite);
             }
         }
     }
