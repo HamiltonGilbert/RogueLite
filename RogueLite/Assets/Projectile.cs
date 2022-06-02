@@ -25,6 +25,11 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, 5);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print(damage);
+    }
+
     void Move(Vector3 targetVelocity)
     {
         rigidbody.velocity += speed * Time.fixedDeltaTime * new Vector2(targetVelocity.x, targetVelocity.y);
