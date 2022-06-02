@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
                 //Vector3 rotation = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x * rotationMod);
                 
                 fireTiming = 0;
-                Instantiate(projectile, transform.position, Quaternion.identity, transform.root).GetComponent<Projectile>().Create(projectileSpeed, mousePosition, transform.position, rotationMod, weaponBase.WeaponSprite);
+                Instantiate(projectile, transform.position, Quaternion.identity, transform.root).GetComponent<Projectile>().Create(mousePosition, transform.position, rotationMod, weaponBase, damage, projectileSpeed);
             }
         }
     }
@@ -106,7 +106,6 @@ public class PlayerController : MonoBehaviour
     public void ChooseWeapon(WeaponBase weaponBase)
     {
         this.weaponBase = weaponBase;
-        weapon.GetComponent<SpriteRenderer>().sprite = weaponBase.WeaponSprite;
     }
     public void StartGame()
     {
