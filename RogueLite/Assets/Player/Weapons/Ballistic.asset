@@ -21,4 +21,4 @@ MonoBehaviour:
   shieldCooldownMultiplier: 1.2
   weaponSize: 1.2
   spread: 8
-  projectileSpeed: 5
+  projectileSpeed: 4.5

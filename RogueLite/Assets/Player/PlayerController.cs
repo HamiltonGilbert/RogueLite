@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject hull;
     [SerializeField] GameObject shield;
     [SerializeField] GameObject thrusters;
-    [SerializeField] GameObject weapon;
     [SerializeField] new Rigidbody2D rigidbody;
     [SerializeField] float friction;
 
@@ -48,19 +47,18 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        fireTiming += Time.deltaTime;
         if (gameRunning)
         {
-            fireTiming += Time.deltaTime;
-
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // fire projectile
-            while (Input.GetMouseButton(1) && fireTiming > 1/attacksPerSecond)
+            if (Input.GetMouseButton(1) && fireTiming > 1/attacksPerSecond)
             {
                 float rotationMod = Random.Range(-.5f * weaponSpread, .5f * weaponSpread);
-                Vector3 rotation = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x * rotationMod);
+                //Vector3 rotation = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.x * rotationMod);
                 
-                fireTiming -= 1 / attacksPerSecond;
-                Instantiate(projectile, transform.position, Quaternion.identity, transform.root).GetComponent<Projectile>().Create(projectileSpeed, mousePosition, transform.position, rotation, weaponBase.WeaponSprite);
+                fireTiming = 0;
+                Instantiate(projectile, transform.position, Quaternion.identity, transform.root).GetComponent<Projectile>().Create(projectileSpeed, mousePosition, transform.position, rotationMod, weaponBase.WeaponSprite);
             }
         }
     }

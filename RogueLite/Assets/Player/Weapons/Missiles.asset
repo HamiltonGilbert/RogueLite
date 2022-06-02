@@ -15,10 +15,10 @@ MonoBehaviour:
   name: Missiles
   description: 
   weaponSprite: {fileID: 21300000, guid: 0259b9a87b1759742a4a96bddd1616fc, type: 3}
-  damage: 7.5
-  attacksPerSecond: 1.5
+  damage: 3
+  attacksPerSecond: 6
   speedMultiplier: 1
   shieldCooldownMultiplier: 1
   weaponSize: 1
   spread: 45
-  projectileSpeed: 7.5
+  projectileSpeed: 6
