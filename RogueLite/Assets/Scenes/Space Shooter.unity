@@ -609,8 +609,8 @@ SpriteRenderer:
   m_SortingLayerID: -1183749751
   m_SortingLayer: -1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c1758fc9a99387049a99c7f8d7da96a9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 335a9829692ad684cac1486f542b5255, type: 3}
+  m_Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1709,6 +1709,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1490542554416835567, guid: c34a54d3e1b32004f9fd5bac1558da2e, type: 3}
+      propertyPath: shieldBase
+      value: 
+      objectReference: {fileID: 11400000, guid: 47e3824a53449914dbf6293db2a83f0d, type: 2}
+    - target: {fileID: 1490542554416835567, guid: c34a54d3e1b32004f9fd5bac1558da2e, type: 3}
       propertyPath: systemManager
       value: 
       objectReference: {fileID: 237490771}
@@ -1809,8 +1813,12 @@ PrefabInstance:
       value: -54.6
       objectReference: {fileID: 0}
     - target: {fileID: 2856460288573187772, guid: c34a54d3e1b32004f9fd5bac1558da2e, type: 3}
+      propertyPath: m_Name
+      value: None
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856460288573187772, guid: c34a54d3e1b32004f9fd5bac1558da2e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2856460288705103081, guid: c34a54d3e1b32004f9fd5bac1558da2e, type: 3}
       propertyPath: m_LocalScale.x
@@ -4248,7 +4256,6 @@ MonoBehaviour:
   hull: {fileID: 1333275417}
   shield: {fileID: 1821815116}
   thrusters: {fileID: 705228304}
-  weapon: {fileID: 0}
   rigidbody: {fileID: 1962436294}
   friction: 1
   projectile: {fileID: 8445746907294828797, guid: a4c1fd83dc90aa64c9a5ddf5530b1948, type: 3}
